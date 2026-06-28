@@ -79,10 +79,24 @@ export default function Contributing() {
       </svg>
 
       <div ref={ref} className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-        <div className="reveal inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-4xl mb-8 mx-auto"
-          style={{ animation: "float 4s ease-in-out infinite" }}>
+      {/* Animated ring container */}
+      <div className="relative z-10 text-center mb-8">
+        <div
+          className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-4xl mx-auto"
+          style={{ animation: "float 4s ease-in-out infinite, pulse-glow 4s ease-in-out infinite" }}
+        >
           🤝
         </div>
+        {/* Orbiting dot */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div style={{ animation: "orbit 4s linear infinite" }}
+            className="w-3 h-3 rounded-full bg-purple-400 shadow-lg" />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div style={{ animation: "orbit-reverse 6s linear infinite" }}
+            className="w-2 h-2 rounded-full bg-pink-400 shadow-lg" />
+        </div>
+      </div>
 
         <p className="reveal text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3 stagger-1">
           Open Source

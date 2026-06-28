@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
             <div>
               <span className="text-white font-bold text-lg block">HivarSoft</span>
-              <span className="text-xs text-slate-500">Affordable & Open Source</span>
+              <span className="text-xs text-slate-500">Creating Value Through Technology</span>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <p>&copy; {year} HivarSoft. All rights reserved.</p>
-          <p className="text-slate-600 italic text-xs">Building Software That Works. Pricing That Makes Sense.</p>
+          <p className="text-slate-600 italic text-xs">Building Software That Works. One Step At a Time.</p>
         </div>
       </div>
     </footer>
