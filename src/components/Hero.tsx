@@ -136,40 +136,42 @@ export default function Hero() {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 flex flex-col items-center text-center gap-5 sm:gap-6 z-10">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 pb-20 sm:pb-24 flex flex-col items-center text-center gap-4 sm:gap-6 z-10">
 
         {/* Logo with pulse glow */}
         <div
           className="rounded-2xl p-1"
           style={{ animation: "pulse-glow 3s ease-in-out infinite, fade-up 0.6s ease forwards" }}
         >
-          <Image src="/Logo.png" alt="HivarSoft" width={72} height={72} className="rounded-xl" priority />
+          <Image src="/Logo.png" alt="HivarSoft" width={56} height={56} className="rounded-xl sm:w-[72px] sm:h-[72px]" priority />
         </div>
 
         {/* Shimmer badge */}
         <div
-          className="shimmer inline-flex items-center gap-2 border border-purple-400/30 rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm text-purple-200 text-center max-w-xs sm:max-w-none"
+          className="shimmer inline-flex items-center gap-2 border border-purple-400/30 rounded-full px-3 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-sm text-purple-200 text-center"
           style={{ animation: "fade-up 0.6s ease 0.15s both" }}
         >
-          <span className="w-2 h-2 rounded-full bg-purple-400 inline-block"
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400 inline-block shrink-0"
             style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
-          Software Products &bull; Open Source &bull; Innovation &bull; Community
+          <span>Software Products &bull; Open Source &bull; Innovation &bull; Community</span>
         </div>
 
         {/* Headline */}
         <h1
-          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl"
+          className="text-[2rem] sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.15] max-w-4xl"
           style={{ animation: "fade-up 0.7s ease 0.25s both" }}
         >
           Building{" "}
           <span className="gradient-text">Modern Software</span>
-          <br />That{" "}
+          <span className="hidden sm:inline"><br /></span>
+          <span className="sm:hidden"> </span>
+          That{" "}
           <span className="gradient-text">Actually Works</span>
         </h1>
 
         {/* Sub */}
         <p
-          className="text-base sm:text-xl text-slate-300 max-w-2xl leading-relaxed px-2"
+          className="text-sm sm:text-xl text-slate-300 max-w-2xl leading-relaxed"
           style={{ animation: "fade-up 0.7s ease 0.4s both" }}
         >
           From proprietary SaaS products to open source tools —
@@ -178,12 +180,12 @@ export default function Hero() {
 
         {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row gap-3 mt-2 w-full sm:w-auto px-4 sm:px-0"
+          className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
           style={{ animation: "fade-up 0.7s ease 0.55s both" }}
         >
           <a
             href="#projects"
-            className="group relative inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-purple-500/40 hover:shadow-xl hover:-translate-y-1"
+            className="group relative inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold px-7 py-3 sm:py-3.5 rounded-xl transition-all shadow-lg hover:shadow-purple-500/40 hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
           >
             🚀 View Projects
             <span className="absolute inset-0 rounded-xl ring-0 group-hover:ring-2 ring-purple-400/50 transition-all" />
@@ -192,20 +194,21 @@ export default function Hero() {
             href="https://github.com/HivarSoft"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white/8 hover:bg-white/15 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-3.5 rounded-xl transition-all hover:-translate-y-1"
+            className="inline-flex items-center justify-center gap-2 bg-white/8 hover:bg-white/15 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3 sm:py-3.5 rounded-xl transition-all hover:-translate-y-1 text-sm sm:text-base"
           >
             ⭐ Star on GitHub
           </a>
         </div>
       </div>
 
-      {/* Scroll indicator — pinned bottom */}
+      {/* Scroll indicator — pinned bottom, always has space */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 text-xs z-10"
+        className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-500 text-xs z-10"
         style={{ animation: "fade-in 1s ease 1.4s both" }}
       >
-        <span className="tracking-widest uppercase text-[10px]">Scroll</span>
-        <svg width="20" height="28" viewBox="0 0 20 28" fill="none" aria-hidden="true"
+        <span className="tracking-widest uppercase text-[9px] sm:text-[10px]">Scroll</span>
+        <svg width="16" height="24" viewBox="0 0 20 28" fill="none" aria-hidden="true"
+          className="sm:w-5 sm:h-7"
           style={{ animation: "float 2s ease-in-out infinite" }}>
           <rect x="1" y="1" width="18" height="26" rx="9" stroke="#6d28d9" strokeWidth="1.5" strokeOpacity="0.5"/>
           <rect x="9" y="5" width="2" height="6" rx="1" fill="#a78bfa"
