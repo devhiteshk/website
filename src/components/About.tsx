@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { LuRocket, LuGlobe, LuCpu, LuBadgeDollarSign, LuShieldCheck, LuUsers } from "react-icons/lu";
+import type { IconType } from "react-icons";
 
-const values = [
-  { icon: "🚀", label: "SaaS & Proprietary Products",   color: "from-purple-500 to-violet-600" },
-  { icon: "🌐", label: "Open Source Contributions",      color: "from-blue-500 to-cyan-500" },
-  { icon: "⚙️", label: "Modern Tech Stack",              color: "from-slate-500 to-slate-700" },
-  { icon: "💰", label: "Pricing That Makes Sense",       color: "from-green-500 to-emerald-500" },
-  { icon: "🛡️", label: "Reliable & Scalable",            color: "from-orange-500 to-amber-500" },
-  { icon: "🤝", label: "Community-Driven Innovation",    color: "from-pink-500 to-rose-500" },
+const values: { Icon: IconType; label: string; color: string }[] = [
+  { Icon: LuRocket,           label: "SaaS & Proprietary Products",   color: "from-purple-500 to-violet-600" },
+  { Icon: LuGlobe,            label: "Open Source Contributions",      color: "from-blue-500 to-cyan-500" },
+  { Icon: LuCpu,              label: "Modern Tech Stack",              color: "from-slate-500 to-slate-700" },
+  { Icon: LuBadgeDollarSign,  label: "Pricing That Makes Sense",       color: "from-green-500 to-emerald-500" },
+  { Icon: LuShieldCheck,      label: "Reliable & Scalable",            color: "from-orange-500 to-amber-500" },
+  { Icon: LuUsers,            label: "Community-Driven Innovation",    color: "from-pink-500 to-rose-500" },
 ];
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -42,7 +44,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 export default function About() {
   return (
     <section id="about" className="py-16 md:py-28 bg-white relative overflow-hidden">
-      {/* Animated SVG network — hidden on mobile to avoid overlap */}
+      {/* Animated SVG network — hidden on mobile */}
       <svg aria-hidden="true" className="hidden sm:block absolute right-0 top-0 w-1/2 h-full opacity-35 pointer-events-none" viewBox="0 0 600 700" fill="none">
         <defs>
           <filter id="about-glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -54,11 +56,9 @@ export default function About() {
         <line x1="300" y1="350" x2="550" y2="350" stroke="#6d28d9" strokeWidth="1.5" strokeOpacity="0.5" className="line-draw-3" filter="url(#about-glow)"/>
         <line x1="100" y1="150" x2="500" y2="150" stroke="#8b5cf6" strokeWidth="1" strokeOpacity="0.3" className="line-draw-2"/>
         <line x1="100" y1="550" x2="500" y2="550" stroke="#8b5cf6" strokeWidth="1" strokeOpacity="0.3" className="line-draw-2"/>
-        {/* Flow pulses */}
         <line x1="300" y1="350" x2="100" y2="150" stroke="#c4b5fd" strokeWidth="2.5" strokeOpacity="0.8" className="line-flow" filter="url(#about-glow)"/>
         <line x1="300" y1="350" x2="500" y2="550" stroke="#e879f9" strokeWidth="2" strokeOpacity="0.6"
           style={{ strokeDasharray: "10 240", animationDelay: "0.8s" }} className="line-flow" filter="url(#about-glow)"/>
-        {/* Twinkling nodes */}
         {[[300,350],[100,150],[500,150],[100,550],[500,550],[550,350]].map(([cx,cy],i)=>(
           <circle key={i} cx={cx} cy={cy} r={i===0?9:5} fill="#7c3aed" fillOpacity={i===0?0.7:0.45}
             filter="url(#about-glow)"
@@ -67,7 +67,6 @@ export default function About() {
       </svg>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-20">
           <p className="reveal text-sm font-semibold uppercase tracking-widest text-purple-600 mb-3">About Us</p>
           <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 stagger-1">
@@ -87,7 +86,6 @@ export default function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-          {/* Left */}
           <div>
             <div className="reveal reveal-left stagger-1 mb-8">
               <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
@@ -106,12 +104,11 @@ export default function About() {
               </a>
             </div>
 
-            {/* Animated stat counters */}
             <div className="reveal reveal-left stagger-2 flex flex-wrap gap-4">
               {[
-                { target: 2,   suffix: "+",  label: "Live Products" },
-                { target: 0,   suffix: "",   label: "Open Source Repos", isInfinity: true, symbol: "OSS" },
-                { target: 0,   suffix: "∞",  label: "Community",    isInfinity: true },
+                { target: 2,  suffix: "+", label: "Live Products" },
+                { target: 0,  suffix: "",  label: "Open Source Repos", isInfinity: true, symbol: "OSS" },
+                { target: 0,  suffix: "∞", label: "Community", isInfinity: true },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col items-center bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 card-glow">
                   <span className="text-2xl font-extrabold gradient-text">
@@ -123,7 +120,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — vision list */}
           <div>
             <div className="reveal reveal-right stagger-1 mb-4">
               <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
@@ -132,14 +128,14 @@ export default function About() {
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">A trusted partner for every team</h3>
             </div>
             <ul className="space-y-3">
-              {values.map((v, i) => (
-                <li key={v.label}
+              {values.map(({ Icon, label, color }, i) => (
+                <li key={label}
                   className={`reveal reveal-right stagger-${i + 2} flex items-center gap-3 bg-white border border-slate-100 rounded-xl px-3 sm:px-4 py-3 sm:py-3.5 card-glow`}>
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-linear-to-br ${v.color} flex items-center justify-center text-sm shrink-0 shadow-sm`}
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-linear-to-br ${color} flex items-center justify-center shrink-0 shadow-sm`}
                     style={{ animation: `float-slow ${4 + i * 0.5}s ease-in-out ${i * 0.3}s infinite` }}>
-                    {v.icon}
+                    <Icon className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-medium text-sm sm:text-base text-slate-800">{v.label}</span>
+                  <span className="font-medium text-sm sm:text-base text-slate-800">{label}</span>
                 </li>
               ))}
             </ul>
