@@ -17,7 +17,7 @@ const PARTICLES = [
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden bg-[#050816] text-white flex items-center"
+      className="relative overflow-hidden bg-[#050816] text-white flex flex-col items-center justify-between"
       style={{ minHeight: "100dvh" }}
     >
       {/* ── Animated SVG circuit background ── */}
@@ -135,8 +135,8 @@ export default function Hero() {
           style={{ animation: "pulse-ring 3s ease-out 1.5s infinite" }} />
       </div>
 
-      {/* ── Content ── */}
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 pb-20 sm:pb-24 flex flex-col items-center text-center gap-4 sm:gap-6 z-10">
+      {/* ── Content — grows to fill space ── */}
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 flex-1 flex flex-col items-center justify-center text-center gap-4 sm:gap-6 z-10">
 
         {/* Logo with pulse glow */}
         <div
@@ -201,9 +201,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator — pinned bottom, always has space */}
+      {/* Scroll indicator — always at bottom, never overlapping */}
       <div
-        className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-500 text-xs z-10"
+        className="relative z-10 flex flex-col items-center gap-1.5 text-slate-500 text-xs pb-6 sm:pb-8"
         style={{ animation: "fade-in 1s ease 1.4s both" }}
       >
         <span className="tracking-widest uppercase text-[9px] sm:text-[10px]">Scroll</span>
