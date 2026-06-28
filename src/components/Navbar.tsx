@@ -1,24 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
-  // "light" only once we've scrolled past the hero section
-  const [pastHero, setPastHero] = useState(false);
   const [active, setActive] = useState("");
-  const heroRef = useRef<Element | null>(null);
-
-  useEffect(() => {
-    // Find the hero section height dynamically
-    heroRef.current = document.querySelector("section");
-    const onScroll = () => {
-      const heroHeight = heroRef.current?.clientHeight ?? window.innerHeight;
-      setPastHero(window.scrollY > heroHeight - 80);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const links = [
     { href: "#about",    label: "About" },
@@ -28,13 +14,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        pastHero
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-[#050816]/80 backdrop-blur-md border-b border-white/5"
-      }`}
-    >
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative">
@@ -48,13 +28,7 @@ export default function Navbar() {
             />
             <div className="absolute -inset-1 rounded-xl bg-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity blur-sm" />
           </div>
-          <span
-            className={`text-xl font-bold transition-colors duration-500 ${
-              pastHero ? "text-slate-900" : "text-white"
-            }`}
-          >
-            HivarSoft
-          </span>
+          <span className="text-xl font-bold text-slate-900">HivarSoft</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -64,13 +38,9 @@ export default function Navbar() {
               href={l.href}
               onClick={() => setActive(l.href)}
               className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all group ${
-                pastHero
-                  ? active === l.href
-                    ? "text-purple-700 bg-purple-50"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                  : active === l.href
-                    ? "text-white bg-white/15"
-                    : "text-white/75 hover:text-white hover:bg-white/10"
+                active === l.href
+                  ? "text-purple-700 bg-purple-50"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
               {l.label}
@@ -83,11 +53,7 @@ export default function Navbar() {
           href="https://github.com/HivarSoft"
           target="_blank"
           rel="noopener noreferrer"
-          className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-500 hover:-translate-y-0.5 ${
-            pastHero
-              ? "bg-slate-900 text-white hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/25"
-              : "bg-purple-600 text-white hover:bg-purple-500 hover:shadow-lg hover:shadow-purple-500/30"
-          }`}
+          className="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/25 transition-all hover:-translate-y-0.5"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path
