@@ -25,6 +25,7 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none"
         xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1400 700"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -45,9 +46,16 @@ export default function Hero() {
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
           <filter id="glow-strong">
-            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feGaussianBlur stdDeviation="5" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+
+          {/* Named paths so animateMotion can reference them */}
+          <path id="p1" d="M -50 300 L 200 300 L 260 240 L 600 240 L 660 300 L 900 300 L 960 360 L 1450 360" />
+          <path id="p2" d="M -50 100 L 350 100 L 410 160 L 700 160 L 760 100 L 1150 100 L 1450 100" />
+          <path id="p3" d="M -50 500 L 150 500 L 210 560 L 500 560 L 560 500 L 850 500 L 910 440 L 1450 440" />
+          <path id="p4" d="M 800 -10 L 900 150 L 900 360 L 1000 460 L 1200 460 L 1300 360 L 1450 360" />
+          <path id="p5" d="M -50 650 L 200 600 L 400 620 L 700 580 L 1000 620 L 1200 600 L 1450 640" />
         </defs>
 
         {/* Gradient orbs */}
@@ -55,46 +63,84 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#rg2)" />
         <rect width="100%" height="100%" fill="url(#rg3)" />
 
-        {/* Circuit lines — drawn on load */}
-        <path d="M -50 300 L 200 300 L 260 240 L 600 240 L 660 300 L 900 300 L 960 360 L 1400 360"
-          fill="none" stroke="#7c3aed" strokeWidth="1.5" strokeOpacity="0.6" filter="url(#glow)" className="line-draw" />
-        <path d="M 100 100 L 350 100 L 410 160 L 700 160 L 760 100 L 1100 100"
-          fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.5" filter="url(#glow)" className="line-draw-2" />
-        <path d="M 0 500 L 150 500 L 210 560 L 500 560 L 560 500 L 850 500 L 910 440 L 1400 440"
-          fill="none" stroke="#6d28d9" strokeWidth="1" strokeOpacity="0.4" className="line-draw-3" />
-        <path d="M 800 50 L 900 150 L 900 350 L 1000 450 L 1200 450 L 1300 350 L 1400 350"
-          fill="none" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.5" filter="url(#glow)" className="line-draw-2" />
+        {/* ── Static circuit lines drawn on load ── */}
+        <use href="#p1" fill="none" stroke="#7c3aed" strokeWidth="1.5" strokeOpacity="0.55" filter="url(#glow)" className="line-draw" />
+        <use href="#p2" fill="none" stroke="#a855f7" strokeWidth="1"   strokeOpacity="0.45" filter="url(#glow)" className="line-draw-2" />
+        <use href="#p3" fill="none" stroke="#6d28d9" strokeWidth="1"   strokeOpacity="0.4"  className="line-draw-3" />
+        <use href="#p4" fill="none" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.45" filter="url(#glow)" className="line-draw-2" />
+        <use href="#p5" fill="none" stroke="#4f46e5" strokeWidth="1"   strokeOpacity="0.3"  className="line-draw-3" />
 
-        {/* Flowing data pulses — infinite */}
-        <path d="M -50 300 L 200 300 L 260 240 L 600 240 L 660 300 L 900 300 L 960 360 L 1400 360"
-          fill="none" stroke="#c4b5fd" strokeWidth="2.5" strokeOpacity="0.9" filter="url(#glow-strong)" className="line-flow" />
-        <path d="M 100 100 L 350 100 L 410 160 L 700 160 L 760 100 L 1100 100"
-          fill="none" stroke="#e879f9" strokeWidth="2" strokeOpacity="0.7" filter="url(#glow)"
-          style={{ strokeDasharray: "15 220", animationDelay: "1.2s" }} className="line-flow" />
-        <path d="M 0 500 L 150 500 L 210 560 L 500 560 L 560 500 L 850 500 L 910 440 L 1400 440"
-          fill="none" stroke="#818cf8" strokeWidth="2" strokeOpacity="0.6" filter="url(#glow)"
-          style={{ strokeDasharray: "12 240", animationDelay: "2.4s" }} className="line-flow" />
+        {/* ── Glowing pulses that travel exactly along each path ── */}
+        {/* Pulse on p1 */}
+        <circle r="4" fill="#c4b5fd" filter="url(#glow-strong)" opacity="0.9">
+          <animateMotion dur="5s" repeatCount="indefinite" begin="0s">
+            <mpath href="#p1" />
+          </animateMotion>
+        </circle>
+        <circle r="2.5" fill="#e879f9" filter="url(#glow)" opacity="0.7">
+          <animateMotion dur="5s" repeatCount="indefinite" begin="2.5s">
+            <mpath href="#p1" />
+          </animateMotion>
+        </circle>
 
-        {/* Junction nodes — twinkling */}
-        {[
+        {/* Pulse on p2 */}
+        <circle r="3.5" fill="#e879f9" filter="url(#glow-strong)" opacity="0.85">
+          <animateMotion dur="6s" repeatCount="indefinite" begin="1s">
+            <mpath href="#p2" />
+          </animateMotion>
+        </circle>
+        <circle r="2" fill="#a78bfa" filter="url(#glow)" opacity="0.6">
+          <animateMotion dur="6s" repeatCount="indefinite" begin="4s">
+            <mpath href="#p2" />
+          </animateMotion>
+        </circle>
+
+        {/* Pulse on p3 */}
+        <circle r="3" fill="#818cf8" filter="url(#glow-strong)" opacity="0.8">
+          <animateMotion dur="7s" repeatCount="indefinite" begin="0.5s">
+            <mpath href="#p3" />
+          </animateMotion>
+        </circle>
+        <circle r="2" fill="#c4b5fd" filter="url(#glow)" opacity="0.6">
+          <animateMotion dur="7s" repeatCount="indefinite" begin="3.5s">
+            <mpath href="#p3" />
+          </animateMotion>
+        </circle>
+
+        {/* Pulse on p4 */}
+        <circle r="3" fill="#a78bfa" filter="url(#glow-strong)" opacity="0.75">
+          <animateMotion dur="5.5s" repeatCount="indefinite" begin="2s">
+            <mpath href="#p4" />
+          </animateMotion>
+        </circle>
+
+        {/* Pulse on p5 */}
+        <circle r="2.5" fill="#6366f1" filter="url(#glow)" opacity="0.65">
+          <animateMotion dur="8s" repeatCount="indefinite" begin="1.5s">
+            <mpath href="#p5" />
+          </animateMotion>
+        </circle>
+
+        {/* ── Junction nodes — twinkling ── */}
+        {([
           [200,300],[260,240],[600,240],[660,300],[900,300],[960,360],
           [350,100],[410,160],[700,160],[760,100],
-          [150,500],[210,560],[500,560],[560,500],[850,500],
-        ].map(([cx,cy],i) => (
-          <circle key={i} cx={cx} cy={cy} r="3.5" fill="#a78bfa" fillOpacity="0.85" filter="url(#glow)"
+          [150,500],[210,560],[500,560],[560,500],[850,500],[910,440],
+        ] as [number,number][]).map(([cx,cy],i) => (
+          <circle key={i} cx={cx} cy={cy} r="3" fill="#a78bfa" fillOpacity="0.8" filter="url(#glow)"
             style={{ animation: `twinkle ${1.8+(i%4)*0.5}s ease-in-out ${i*0.18}s infinite` }} />
         ))}
 
-        {/* Dot grid */}
+        {/* ── Dot grid ── */}
         {Array.from({length:10}).map((_,row) =>
           Array.from({length:18}).map((_,col) => (
-            <circle key={`${row}-${col}`} cx={col*80+40} cy={row*60+30} r="1" fill="#6d28d9" fillOpacity="0.18" />
+            <circle key={`${row}-${col}`} cx={col*80+40} cy={row*70+35} r="1" fill="#6d28d9" fillOpacity="0.15" />
           ))
         )}
 
-        {/* Hexagon accent */}
-        <g opacity="0.1" transform="translate(1050,30)">
-          {[0,1,2,3].map(row=>[0,1,2].map(col=>{
+        {/* ── Hexagon accent top-right ── */}
+        <g opacity="0.08" transform="translate(1050,30)">
+          {([0,1,2,3] as number[]).map(row=>([0,1,2] as number[]).map(col=>{
             const x=col*52+(row%2)*26, y=row*45;
             return <polygon key={`${row}-${col}`}
               points={`${x},${y+15} ${x+26},${y} ${x+52},${y+15} ${x+52},${y+45} ${x+26},${y+60} ${x},${y+45}`}
