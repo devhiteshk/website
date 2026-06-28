@@ -11,11 +11,11 @@ const notesFeatures = [
 const gitStatsFeatures = [
   { icon: "📊", title: "Activity Heatmaps",      description: "Visualize commit patterns by hour, day, and month. Spot peak productivity windows and identify burnout risks." },
   { icon: "👥", title: "Author Analytics",        description: "Deep-dive into per-author stats — commits, lines added/removed, active days, streaks, and peak hours." },
+  { icon: "📁", title: "File & Language Breakdown", description: "See your codebase composition by file extension and language. Understand what your repo is made of." },
+  { icon: "🌿", title: "Branch & Multi-Platform", description: "Switch branches instantly. Import from GitHub, GitLab, or Bitbucket — or upload your .git folder." },
   { icon: "⏱️", title: "Parameter Metrics",       description: "Engineering KPIs from git history: cycle time, coding time, PR size distribution, and code rework ratio." },
   { icon: "🚌", title: "Bus Factor Analysis",     description: "Know your team's knowledge risk. See which files are owned by a single person." },
-  { icon: "🌿", title: "Branch & Multi-Platform", description: "Switch branches instantly. Import from GitHub, GitLab, or Bitbucket — or upload your .git folder." },
   { icon: "🏢", title: "Team Organisations",      description: "Invite team members with granular permissions. Org-level dashboards across all repos." },
-  { icon: "📁", title: "File & Language Breakdown", description: "See your codebase composition by file extension and language. Understand what your repo is made of." },
   { icon: "🔄", title: "Stale Branch Detection",  description: "Automatically surface branches untouched for 30+ days. Keep your repo clean and your team focused." },
 ];
 

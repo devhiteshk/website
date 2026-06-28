@@ -68,7 +68,13 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <p>&copy; {year} HivarSoft. All rights reserved.</p>
-          <p className="text-slate-600 italic text-xs">Building Software That Works. One Step At a Time.</p>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <a href="/terms" className="hover:text-purple-400 transition-colors">Terms of Service</a>
+            <span>·</span>
+            <a href="/privacy" className="hover:text-purple-400 transition-colors">Privacy Policy</a>
+            <span>·</span>
+            <span className="italic">Building Software That Works. One Step At a Time.</span>
+          </div>
         </div>
       </div>
     </footer>
